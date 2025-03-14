@@ -1,12 +1,15 @@
+import { InputHTMLAttributes } from "react";
+
 interface FormInputProps {
-    type: string;
-    placeholder: string;
-    required: boolean;
-    errors: string[];
+    errors?: string[];
     name: string;
 }
 
-export default function FormInput({type, placeholder, required, errors, name}: FormInputProps) {
+export default function FormInput({
+    errors=[], 
+    name,
+    ...rest
+}: FormInputProps & InputHTMLAttributes<HTMLInputElement>) {
     return (
         <div className="flex flex-col gap-3">
             <input className={`w-96 h-12 rounded-full
@@ -16,9 +19,7 @@ export default function FormInput({type, placeholder, required, errors, name}: F
             transition-shadow
             px-5`}
             name={name}
-            type={type}
-            placeholder={placeholder}
-            required={required}
+            {...rest}
             />
             {errors.map((error, index) => (
                 <span key={index} className="w-96 text-left text-red-500 text-sm">
