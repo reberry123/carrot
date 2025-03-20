@@ -111,6 +111,6 @@ export async function handleForm(prevState: any, formData: FormData) {
             },
         });
 
-        redirect("/");
+        redirect("/log-in");
     }
 }

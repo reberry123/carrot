@@ -52,7 +52,7 @@ export async function handleForm(prevState: any, formData: FormData) {
             session.id = user!.id;
             await session.save();
     
-            redirect("/profile");
+            redirect("/");
         }
         else {
             return {

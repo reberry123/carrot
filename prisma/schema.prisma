@@ -14,4 +14,14 @@ model User {
   email String? @unique
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+  tweet Tweet[]
+}
+
+model Tweet {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  tweet String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }

@@ -6,7 +6,6 @@ interface Routes {
 }
 
 const publicOnlyUrls: Routes = {
-    "/": true,
     "/log-in": true,
     "/create-account": true,
 }
@@ -17,13 +16,16 @@ export async function middleware(request: NextRequest) {
 
     const session = await getSession();
     const exists = publicOnlyUrls[pathname];
+
+    // 비로그인
     if (!session.id) {
         if (!exists) {
-            return Response.redirect(new URL("/", request.url));
+            return Response.redirect(new URL("/log-in", request.url));
         }
+    // 로그인
     } else {
         if (exists) {
-            return Response.redirect(new URL("/profile", request.url));
+            return Response.redirect(new URL("/", request.url));
         }
     }
 }
