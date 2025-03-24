@@ -3,6 +3,7 @@ import TweetList from "@/components/tweet-list";
 import db from "@/lib/db";
 import { Prisma } from "@prisma/client";
 import Link from "next/link";
+import AddTweet from "./addTweet";
 
 async function getTweets() {
   const tweets = await db.tweet.findMany({
@@ -34,7 +35,8 @@ export default async function Tweets() {
   const initialTweets = await getTweets();
 
   return (
-    <div className="flex justify-center w-full overflow-y-scroll">
+    <div className="flex flex-col gap-20 items-center w-full overflow-y-scroll">
+      <AddTweet/>
       <TweetList initialTweets={initialTweets}/>
     </div>);
 }

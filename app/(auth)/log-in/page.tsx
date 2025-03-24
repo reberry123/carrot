@@ -12,9 +12,9 @@ export default function Login() {
     <div>
       <span className="text-3xl font-bold py-5">Login</span>
       <form action={action} className="flex flex-col gap-3">
-        <FormInput name="email" type="email" placeholder="Email" required={false} errors={state?.fieldErrors.email}></FormInput>
-        <FormInput name="password" type="password" placeholder="Password" required errors={state?.fieldErrors.password}></FormInput>
-        <FormButton text="Log in"></FormButton>
+        <FormInput name="email" type="email" placeholder="Email" required={false} errors={state?.fieldErrors.email}/>
+        <FormInput name="password" type="password" placeholder="Password" required errors={state?.fieldErrors.password}/>
+        <FormButton text="Log in"/>
         <div className={`flex items-center px-6 w-96 h-16 bg-emerald-400 rounded-3xl ${state===undefined ? "block" : "hidden"}`}>Welcome back!</div>
       </form>
     </div>);
